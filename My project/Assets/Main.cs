@@ -8,13 +8,7 @@ public class Main : MonoBehaviour
     Vector2 MousePosition;
     float MaxDistance = 15f;
 
-    void Start()
-    {
-        Cam = GetComponent<Camera>();
-    }
-
-
-    void Update()
+    void Delete()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -27,5 +21,16 @@ public class Main : MonoBehaviour
                 Destroy(hit.collider.gameObject);
             }
         }
+    }
+
+    void Start()
+    {
+        Cam = GetComponent<Camera>();
+    }
+
+
+    void Update()
+    {
+        Delete();
     }
 }
