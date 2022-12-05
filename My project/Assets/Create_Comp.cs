@@ -90,7 +90,7 @@ public class Create_Comp : MonoBehaviour
                 {
                     continue;
                 }
-                Instantiate(Num, new Vector3((i - x) * Box_size, (j - y) * Box_size, 0.5), Quaternion.identity);
+                Instantiate(Num, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
             }
         }
     }
