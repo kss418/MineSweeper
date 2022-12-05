@@ -41,7 +41,7 @@ public class Main : MonoBehaviour
 
             if (hit)
             {
-
+                Bomb_Count--;
             }
         }
     }
