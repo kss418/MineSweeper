@@ -11,6 +11,7 @@ public class Main : MonoBehaviour
     Text Bomb_Display;
     int Bomb_Count = 99;
     int alive = 1;
+    public GameObject flag;
     RaycastHit2D[] hits;
 
     void Delete()
@@ -24,7 +25,6 @@ public class Main : MonoBehaviour
             for(int i = 0; i < hits.Length; i++)
             {
                 RaycastHit2D hit = hits[i];
-                Debug.Log(hit.collider.name);
                 if (hit.collider.name == "Box(Clone)")
                 {
                     Destroy(hit.collider.gameObject);
@@ -61,6 +61,7 @@ public class Main : MonoBehaviour
                 else if(hit.collider.name == "Box(Clone)")
                 {
                     Bomb_Count--;
+                    Instantiate(flag, new Vector3(0, 0, -3), Quaternion.identity);
                 }
             }
         }
