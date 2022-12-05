@@ -10,6 +10,8 @@ public class Main : MonoBehaviour
     float MaxDistance = 15f;
     Text Bomb_Display;
     int Bomb_Count = 99;
+    int alive = 1;
+    RaycastHit2D[] hits;
 
     void Delete()
     {
@@ -17,11 +19,21 @@ public class Main : MonoBehaviour
         {
             MousePosition = Input.mousePosition;
             MousePosition = Cam.ScreenToWorldPoint(MousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(MousePosition, transform.forward, MaxDistance);
+            hits = Physics2D.RaycastAll(MousePosition, transform.forward, MaxDistance);
 
-            if (hit)
+            for(int i = 0; i < hits.Length; i++)
             {
-                Destroy(hit.collider.gameObject);
+                RaycastHit2D hit = hits[i];
+                Debug.Log(hit.collider.name);
+                if (hit.collider.name == "Box(Clone)")
+                {
+                    Destroy(hit.collider.gameObject);
+                }
+
+                else if (hit.collider.name == "Bomb(Clone)")
+                {
+                    alive = 0;
+                }
             }
         }
     }
@@ -41,7 +53,15 @@ public class Main : MonoBehaviour
 
             if (hit)
             {
-                Bomb_Count--;
+                if(hit.collider.name == "Flag(Clone)")
+                {
+                    Bomb_Count++;
+                    Destroy(hit.collider.gameObject);
+                }
+                else if(hit.collider.name == "Box(Clone)")
+                {
+                    Bomb_Count--;
+                }
             }
         }
     }
@@ -55,8 +75,15 @@ public class Main : MonoBehaviour
 
     void Update()
     {
-        Display_Bomb_Count();
-        Delete();
-        Flag();
+        if (alive == 1)
+        {
+            Display_Bomb_Count();
+            Delete();
+            Flag();
+        }
+        else
+        {
+
+        }
     }
 }
