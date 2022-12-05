@@ -25,7 +25,12 @@ public class Main : MonoBehaviour
             for(int i = 0; i < hits.Length; i++)
             {
                 RaycastHit2D hit = hits[i];
-                if (hit.collider.name == "Box(Clone)")
+                if(hit.collider.name == "Flag(Clone)")
+                {
+                    break;
+                }
+
+                else if (hit.collider.name == "Box(Clone)")
                 {
                     Destroy(hit.collider.gameObject);
                 }
@@ -61,7 +66,12 @@ public class Main : MonoBehaviour
                 else if(hit.collider.name == "Box(Clone)")
                 {
                     Bomb_Count--;
-                    Instantiate(flag, new Vector3(0, 0, -3), Quaternion.identity);
+                    float Box_size = GameObject.Find("Box_Generater").GetComponent<Create_Box>().Box_size;
+                    float x = (int)(5 * (MousePosition.x - 0.1f));
+                    float y = (int)(5 * (MousePosition.y - 0.1f));
+                    x *= Box_size;
+                    y *= Box_size;
+                    Instantiate(flag, new Vector3(x, y, -1), Quaternion.identity);
                 }
             }
         }
