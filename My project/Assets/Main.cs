@@ -12,7 +12,7 @@ public class Main : MonoBehaviour
     int Bomb_Count = 99;
     int alive = 1;
     public GameObject flag;
-    RaycastHit2D[] hits, hits2;
+    RaycastHit2D[] hits, hits2, hits3;
 
     void Delete()
     {
@@ -37,7 +37,28 @@ public class Main : MonoBehaviour
                     Box_Check = 1;
                     if(hits.Length == 1)
                     {
-
+                        List<List<float>> vector = new List<List<float>>();
+                        vector.Add(new List<float> { MousePosition.x, MousePosition.y });
+                        while (vector.Count > 0)
+                        {
+                            List<float> cur = vector[0];
+                            vector.RemoveRange(0, 1);
+                            float[] curx = { 0, 0, -0.2f, 0.2f };
+                            float[] cury = { -0.2f, 0.2f, 0, 0 };
+                            for (int i = 0; i < 4; i++)
+                            {
+                                hits3 = Physics2D.RaycastAll(new Vector2(cur[0] + curx[i], cur[1] + cury[i]), transform.forward, MaxDistance);
+                                if (hits3.Length == 1 && hits3[0].collider.name == "Box(Clone)")
+                                {
+                                    Destroy(hits3[0].collider.gameObject);
+                                    vector.Add(new List<float> { cur[0] + curx[i], cur[1] + cury[i] });
+                                }
+                                else if(hits3.Length == 2 && hits3[0].collider.name== "Box(Clone)" && hits3[1].collider.name == "Num(Clone)")
+                                {
+                                    Destroy(hits3[0].collider.gameObject);
+                                }
+                            }
+                        }
                     }
                 }
 
