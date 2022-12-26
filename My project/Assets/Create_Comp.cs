@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Create_Comp : MonoBehaviour
 {
-    public GameObject Bomb, Num;
+    public GameObject One,Two,Three,Four,Five,Six,Seven,Eight;
+    public GameObject Bomb;
     public int Bomb_Count = 99;
     public int[,] arr = new int[40,40];
     public int[,] num_list = new int[40,40];
@@ -86,11 +88,44 @@ public class Create_Comp : MonoBehaviour
                 }
                 
                 num_list[i, j] = cnt;
-                if(cnt == 0)
+                if (cnt == 0)
                 {
                     continue;
                 }
-                Instantiate(Num, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
+                else {
+                    if (cnt == 1)
+                    {
+                        Instantiate(One, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
+                    }
+                    else if (cnt == 2)
+                    {
+                        Instantiate(Two, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
+                    }
+                    else if (cnt == 3)
+                    {
+                        Instantiate(Three, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
+                    }
+                    else if (cnt == 4)
+                    {
+                        Instantiate(Four, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
+                    }
+                    else if (cnt == 5)
+                    {
+                        Instantiate(Five, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
+                    }
+                    else if (cnt == 6)
+                    {
+                        Instantiate(Six, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
+                    }
+                    else if (cnt == 7)
+                    {
+                        Instantiate(Seven, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(Eight, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
+                    }
+                }
             }
         }
     }

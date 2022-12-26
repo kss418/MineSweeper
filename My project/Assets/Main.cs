@@ -53,7 +53,7 @@ public class Main : MonoBehaviour
                                     Destroy(hits3[0].collider.gameObject);
                                     vector.Add(new List<float> { cur[0] + curx[i], cur[1] + cury[i] });
                                 }
-                                else if(hits3.Length == 2 && hits3[0].collider.name== "Box(Clone)" && hits3[1].collider.name == "Num(Clone)")
+                                else if(hits3.Length == 2 && hits3[0].collider.name == "Box(Clone)" && hits3[1].collider.name == "Num(Clone)")
                                 {
                                     Destroy(hits3[0].collider.gameObject);
                                 }
@@ -74,13 +74,19 @@ public class Main : MonoBehaviour
                     {
                         for (float j = -0.2f; j <= 0.2f; j += 0.2f)
                         {
-                            RaycastHit2D curhit = Physics2D.Raycast(MousePosition, transform.forward, MaxDistance);
-                            if(curhit.collider.name == "Flag(Clone)")
+                            RaycastHit2D curhit2 = Physics2D.Raycast(MousePosition, transform.forward, MaxDistance);
+                            if(curhit2.collider.name == "Flag(Clone)")
                             {
                                 cnt++;
                             }
                         }
                     }
+
+                    RaycastHit2D curhit = Physics2D.Raycast(MousePosition, transform.forward, MaxDistance);
+                    if (cnt != 1) {
+                        break;
+                    }
+                    
 
                     for (float i = -0.2f;i <= 0.2f; i += 0.2f)
                     {
