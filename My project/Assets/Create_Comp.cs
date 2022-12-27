@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Create_Comp : MonoBehaviour
 {
-    public GameObject One,Two,Three;
+    public GameObject One,Two,Three,Four,Five,Six,Seven,Eight;
     public GameObject Bomb;
     public int Bomb_Count = 99;
     public int[,] arr = new int[40,40];
@@ -105,8 +105,7 @@ public class Create_Comp : MonoBehaviour
                     {
                         Instantiate(Three, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
                     }
-                    /*
-                    else if (cnt = 4)
+                    else if (cnt == 4)
                     {                       
                         Instantiate(Four, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
                     }
@@ -126,7 +125,6 @@ public class Create_Comp : MonoBehaviour
                     {
                         Instantiate(Eight, new Vector3((i - x) * Box_size, (j - y) * Box_size, 1), Quaternion.identity);
                     }
-                    */
                 }
             }
         }
