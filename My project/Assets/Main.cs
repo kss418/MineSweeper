@@ -10,7 +10,7 @@ public class Main : MonoBehaviour
     float MaxDistance = 15f;
     Text Bomb_Display;
     int Bomb_Count = 99;
-    int alive = 1;
+    public int alive = 1;
     public GameObject flag;
     RaycastHit2D[] hits, hits2, hits3;
 
@@ -151,6 +151,8 @@ public class Main : MonoBehaviour
             }
         }
     }
+
+   
 
     void Start()
     {

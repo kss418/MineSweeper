@@ -130,6 +130,15 @@ public class Create_Comp : MonoBehaviour
         }
     }
 
+    void refresh()
+    {
+        if (Input.GetKey(KeyCode.F5))
+        {
+            GameObject.Find("Box_Generator").GetComponent<Create_Box>().Start();
+            GameObject.Find("Main Camera").GetComponent<Main>().alive = 1;
+        }
+    }
+
     void Start()
     {
         int x = GameObject.Find("Box_Generater").GetComponent<Create_Box>().x;

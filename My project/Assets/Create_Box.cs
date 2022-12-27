@@ -7,8 +7,8 @@ public class Create_Box : MonoBehaviour
     public GameObject Box;
     public int x = 15, y = 8;
     public float Box_size = 0.2f;
-    
-    void Start()
+
+    public void Start()
     {
         for(float i = -x * Box_size ; i <= x * Box_size; i += Box_size)
         {
